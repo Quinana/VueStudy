@@ -3,6 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>综合练习——备忘录demo</title>
+    <style media="screen" type="text/css">
+    div{
+      width: 600px;
+      margin:30px auto;
+    }
+    .inputtext{
+     /*此元素将显示为块级元素，此元素前后会带有换行符。*/
+    display:block;
+    line-height: 20px;
+    padding-left: 20px;
+    /*圆角边框*/
+    border-radius: 20px;
+    border:2px solid #ccc;
+    /*边框投影*/
+    box-shadow: 0 0 2px blue;
+    }
+    li
+    {
+      font-weight: bold;
+      padding-left: 10px;
+    }
+    .delete{
+      background: #ccc;
+      color: black;
+      display:inline-block;
+      text-decoration: none;
+      position: absolute;
+      right:300px;
+      border: 0;
+      padding: 2px 5px;
+      border-radius: 20px;
+   }
+    </style>
   </head>
   <body>
       <div id='app'>
@@ -13,17 +46,18 @@
       用我们学过的指令 v-model @ v-if和 methods 创建一个 Vue 实例;<br>
     	</p>
       <input type="text" placeholder="输入待办事项"
+      class="inputtext"
       v-model='item.content'
       @keydown.enter='addTask'>
 
-      <p>待办事项：</p>
+      <h3>待办事项：</h3>
         <ul>
           <li v-for='(item,index) in list' :key='index'>
             <input type="checkbox"
             :checked='item.finished'
             @click='changeState(index)'>
             <span>{{item.content}}</span>
-            <button type="button" @click='removeList(index)'>删除</button>
+            <button type="button" @click='removeList(index)' class="delete">删除</button>
           </li>
         </ul>
         <p v-if='list.length===0'>空</p>

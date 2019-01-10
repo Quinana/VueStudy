@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>综合练习——备忘录demo</title>
+  <title>备忘录demo</title>
   <style media="screen" type="text/css">
     div {
       width: 600px;
@@ -36,6 +36,10 @@
       border-radius: 50px;
       font-size: 10px;
     }
+    .deleteList
+    {
+      text-decoration: line-through;
+    }
   </style>
 </head>
 
@@ -55,12 +59,12 @@
       <li v-for='(item,index) in list' :key='index'>
         <input type="checkbox" :checked='item.finished' @click='changeState(index)'>
         <span>{{item.content}}<span>
-        <button type="button" @click='removeList(index)' class="delete">Delete</button>
+        <button type="button" @click='removeList(1,index)' class="delete">Delete</button>
       </li>
     </ul>
     <p v-if='list.length===0'>空</p>
-<!--
-    <p>
+
+    <!-- <p>
       <li v-for='(item,index) in list' :key='index'>
         <span>
           content: {{list[index].content}}
@@ -78,20 +82,26 @@
           delete: {{finishedList[index].delete}}
         </span>
       </li>
-    </p>
--->
+    </p> -->
 
     <h3>已完成事项：</h3>
     <ul>
-      <li v-for='(item,index) in finishedList' :key='index'>
-        <input type="checkbox" :checked='item.finished' @click='changeState1(index)'>
+      <li v-for='(item,index) in finishedList' :key='index' class="finished">
+        <input type="checkbox" :checked='item.finished'>
         <span>{{item.content}}<span>
-        <button type="button" @click='removeList(index)' class="delete">Delete</button>
+        <button type="button" @click='removeList(2,index)' class="delete">Delete</button>
       </li>
     </ul>
     <p v-if='finishedList.length===0'>空</p>
 
-
+    <h3>回收站：</h3>
+    <ul>
+      <li v-for='(item,index) in deletedList' :key='index' class="deleteList">
+        <h4 v-if='item.finished===true'>✔ {{item.content}}</h4>
+        <h4 v-else>× {{item.content}}</h4>
+      </li>
+    </ul>
+    <p v-if='deletedList.length===0'>空</p>
   </div>
 </body>
 <script src="C:\Users\lh\github\VueStudy\vue.min.js" charset="utf-8"></script>
@@ -106,7 +116,8 @@
         delete: false
       },
       list: [],
-      finishedList: []
+      finishedList: [],
+      deletedList: []
     },
     //列表
     methods: {
@@ -129,22 +140,19 @@
           this.list.splice(index,1);
         }
       },
-
-      changeState1(index) {
-        let curstate = this.finishedList[index].finished;
-        this.finishedList[index].finished = !curstate;
-        if(this.finishedList[index].finished==false)
+      //删除后存入deletedList
+      removeList(listtype,index) {
+        if(listtype==1)
         {
-          this.list.push(this.finishedList[index]);
-          this.finishedList.splice(index,1);
+          this.deletedList.push(this.list[index]);
+          this.list.splice(index, 1);
         }
-      },
-      //删除
-      removeList(index) {
-        this.list.splice(index, 1);
+        else {
+          this.deletedList.push(this.finishedList[index]);
+          this.finishedList.splice(index, 1);
+        }
       }
     }
-
   })
   console.log(vm.$options.data);
 </script>

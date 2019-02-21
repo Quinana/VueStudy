@@ -8,6 +8,6 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: { Todolist:Todolist},
+  components: {Todolist: Todolist},
   template: '<Todolist/>'
 })

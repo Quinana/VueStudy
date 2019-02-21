@@ -17,18 +17,18 @@ export default {
     'todo-item': Todoitem
   },
   // 变成data为一个函数，函数中的返回值为数据
-  data() {
+  data: function () {
     return {
       inputvalue: '',
       list: []
     }
   },
   methods: {
-    handlesubmit: function() {
-      this.list.push(this.inputvalue);
-      this.inputvalue = '';
+    handlesubmit: function () {
+      this.list.push(this.inputvalue)
+      this.inputvalue = ''
     },
-    handleDelete(index) {
+    handleDelete: function (index) {
       this.list.splice(index, 1)
     }
   }

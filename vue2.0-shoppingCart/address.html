@@ -66,11 +66,12 @@
         <div class="addr-list-wrap">
           <div class="addr-list">
             <ul>
-              <li>
+              <!-- check：是否选中属性 v-bind绑定了一个事件使index=curindex。同时又因为点击事件使得curindex=index。实现点击选中 -->
+              <li v-for="(item,index) in filteredAddress" v-bind:class="{'check':index == curindex}" @click="curindex=index">
                 <dl>
-                  <dt>JackBean</dt>
-                  <dd class="address">北京朝阳区朝阳公园</dd>
-                  <dd class="tel">13356576785</dd>
+                  <dt>{{item.userName}}</dt>
+                  <dd class="address">{{item.streetName}}</dd>
+                  <dd class="tel">{{item.addressId}}</dd>
                 </dl>
                 <div class="addr-opration addr-edit">
                   <a href="javascript:;" class="addr-edit-btn">
@@ -80,16 +81,16 @@
                   </a>
                 </div>
                 <div class="addr-opration addr-del">
-                  <a href="javascript:;" class="addr-del-btn">
+                  <a href="javascript:;" class="addr-del-btn" v-on:click="delConfirm(item)">
                     <svg class="icon icon-del">
                       <use xlink:href="#icon-del"></use>
                     </svg>
                   </a>
                 </div>
                 <div class="addr-opration addr-set-default">
-                  <a href="javascript:;" class="addr-set-default-btn"><i>设为默认</i></a>
+                  <a href="javascript:;" class="addr-set-default-btn" v-if="!item.isDefault" @click="setDefault(index)"><i>设为默认</i></a>
                 </div>
-                <div class="addr-opration addr-default">默认地址</div>
+                <div class="addr-opration addr-default" v-if="item.isDefault">默认地址</div>
               </li>
 
               <li class="addr-new">
@@ -106,7 +107,8 @@
           </div>
 
           <div class="shipping-addr-more">
-            <a class="addr-more-btn up-down-btn" href="javascript:">
+            <!-- 实现more点击后展开收拢 -->
+            <a class="addr-more-btn up-down-btn" href="javascript:" @click="changeLimitNum()">
               more
               <i class="i-up-down">
                 <i class="i-up-down-l"></i>
@@ -123,12 +125,14 @@
         <div class="shipping-method-wrap">
           <div class="shipping-method">
             <ul>
-              <li>
+              <!-- 实现选中 -->
+              <li :class="{'check':shippingMethod==1}" @click="shippingMethod=1">
                 <div class="name">标准配送</div>
                 <div class="price">Free</div>
               </li>
-              <li>
-                <div class="name">高级配送</div>
+              <li :class="{'check':shippingMethod==2}" @click="shippingMethod=2">
+                <div class=" name">高级配送
+                </div>
                 <div class="price">180</div>
               </li>
             </ul>
@@ -137,18 +141,19 @@
         <div class="next-btn-wrap">
           <a href="javascript:;" class="btn btn--red">下一步</a>
         </div>
-        <div class="md-modal modal-msg md-modal-transition" id="showModal">
+        <!-- 删除确认 -->
+        <div class="md-modal modal-msg md-modal-transition" id="showModal" :class="{'md-show':delAddressFlag}">
           <div class="md-modal-inner">
             <div class="md-top">
-              <button class="md-close">关闭</button>
+              <button class="md-close" @click="delAddressFlag=false">关闭</button>
             </div>
             <div class="md-content">
               <div class="confirm-tips">
                 <p id="cusLanInfo">你确认删除此配送地址信息吗?</p>
               </div>
               <div class="btn-wrap col-2">
-                <button class="btn btn--m" id="btnModalConfirm">Yes</button>
-                <button class="btn btn--m btn--red" id="btnModalCancel">No</button>
+                <button class="btn btn--m" id="btnModalConfirm" @click="delAddress()">Yes</button>
+                <button class="btn btn--m btn--red" id="btnModalCancel" @click="delAddressFlag=false">No</button>
               </div>
             </div>
           </div>
@@ -198,8 +203,7 @@
             </div>
           </div>
         </div>
-        <!--         <div class="md-overlay" id="showOverLay"></div>
- -->
+        <div class="md-overlay" v-if="delAddressFlag"></div>
       </div>
     </div>
   </div>
@@ -207,6 +211,7 @@
 
   <script src="js/lib/vue.min.js"></script>
   <script src="js/lib/vue-resource.js"></script>
+  <script src="./js/address.js"></script>
 </body>
 
 </html>

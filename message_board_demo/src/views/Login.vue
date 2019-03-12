@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isReg">
+    <div v-if="isReg">
       <p>用户名</p>
       <input type="text" v-model="name" />
       <p>密码</p>
@@ -50,18 +50,22 @@ export default {
         this.name = ''
         this.password = ''
         this.repeat = ''
-        this.isReg = false
+        this.isReg = true
         // this.$router.push('/')
       } else {
         alert('确保两次密码相同')
       }
     },
     change () {
-      this.isReg = true
+      this.isReg = false
+      this.name = ''
+      this.password = ''
     },
     cancel () {
       // this.$router.push('/')
-      this.isReg = false
+      this.isReg = true
+      this.name = ''
+      this.password = ''
     }
 
   }

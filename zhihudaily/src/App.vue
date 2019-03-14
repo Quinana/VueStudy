@@ -8,6 +8,17 @@
       >
         每日推荐
       </div>
+      <div>
+        <el-date-picker
+          v-model="dailyTime"
+          placeholder="选择日期"
+          type="date"
+          format="yyyy-MM-dd"
+          value-format="timestamp"
+          @change="getSTime"
+        >
+        </el-date-picker>
+      </div>
     </div>
     <div class="daily-list" ref="list">
       <template v-if="type === 'recommend'">
@@ -23,7 +34,6 @@
           </Item>
         </div>
       </template>
-      <!-- <Item></Item> -->
     </div>
     <daily-article :id="articleId"></daily-article>
     <!-- <daily-article></daily-article> -->
@@ -38,10 +48,17 @@ export default {
   components: { Item, dailyArticle },
   data () {
     return {
-      // themes: [],
+      pickerOptions1: {
+        disabledDate (time) {
+          return time.getTime() > Date.now()
+        }
+      },
+      value1: '',
+      // 日期控件
       type: 'recommend',
       recommendList: [],
-      dailyTime: $.getTodayTime(),
+      // dailyTime: $.getTodayTime(),
+      dailyTime: '',
       isLoading: false,
       articleId: 0,
       list: []
@@ -74,6 +91,10 @@ export default {
     },
     handleClick (id) {
       this.articleId = id
+    },
+    getSTime (val) {
+      this.dailyTime = val
+      this.getRecommendList()
     }
   },
   mounted () {

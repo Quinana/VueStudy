@@ -9,6 +9,11 @@
 
 ## 目前完成进度<br>
 
+* [JavaScript进阶篇](https://www.imooc.com/learn/10)
+  * 学习JS基础语法、语法、函数、方法等
+  * 掌握JS编程思路、知识的使用等，实现运用JS语言为网页增加动态效果，达到与用户交互的目的。
+  * [代码](https://github.com/LinStan/VueStudy/tree/master/JS进阶篇)
+
 * [JavaScript入门篇](https://www.imooc.com/learn/36)   <b>✔2019.3.20</b>
   * 熟悉JavaScript基本语法、窗口交互方法和通过DOM进行网页元素的操作
   * 学会如何编写JS代码，如何运用JavaScript去操作HTML元素和CSS样式

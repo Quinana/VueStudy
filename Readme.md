@@ -1,17 +1,25 @@
-该项目主要用于记录Vue的学习进程<br>
+该项目主要用于记录Vue的学习进程
 ============================
+
 按时间线记录了一下自己学习JS的路线和进度条。每个打勾的都是已完成的小目标  论文赶工中
 ------------------------------------------------------------------
-最近更新：2019.3.19
+
+最近更新：2019.3.20
 -------------------
+
 ## 目前完成进度<br>
+
+* [JavaScript入门篇](https://www.imooc.com/learn/36)   <b>✔2019.3.20</b>
+  * 熟悉JavaScript基本语法、窗口交互方法和通过DOM进行网页元素的操作
+  * 学会如何编写JS代码，如何运用JavaScript去操作HTML元素和CSS样式
+  * [代码](https://github.com/LinStan/VueStudy/tree/master/JS入门篇)
 
 * [Promise入门课程](https://www.imooc.com/learn/949) <b>✔2019.3.19</b>
   * 简介：为解决异步函数的回调陷阱，开发社区不断摸索，终于折腾出 Promise/A+。它的优势非常显著：
     1. 不增加新的语法，可以立刻适配几乎所有浏览器 
     2. 以队列的形式组织代码，易读好改 
     3. 捕获异常方案也基本可用
-  * [课程笔记](https://github.com/LinStan/VueStudy/Promise入门课程笔记.md)
+  * [课程笔记](https://github.com/LinStan/VueStudy/blob/master/Promise入门课程笔记.md)
 
 * 知乎日报PC端[基于《Vue.js实战》纸质书第13章实现——书本源码](https://github.com/icarusion/vue-book/tree/master/daily) <b>✔2019.3.13</b>
   * 运行指南看zhihudaily下的readme.md

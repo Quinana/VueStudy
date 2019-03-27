@@ -4,7 +4,7 @@
 按时间线记录了一下自己学习JS的路线和进度条。每个打勾的都是已完成的小目标  论文赶工中
 ------------------------------------------------------------------
 
-最近更新：2019.3.25
+最近更新：2019.3.27
 -------------------
 
 目前完成进度
@@ -13,6 +13,8 @@
 * [深入理解ES6 读书笔记](https://book.douban.com/subject/27072230/)
   * 私人向，只记了一下自己觉得重要的东西，知识点可能不是特别完整
   * [第一章：块级作用域绑定](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第一章：块级作用域绑定.md)
+  * [第二章：字符串和正则表达式](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第二章：字符串和正则表达式.md)
+  * [第三章：函数](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第三章：函数.md)
   
 * [JavaScript进阶篇](https://www.imooc.com/learn/10) <b>✔2019.3.21</b>
   * 学习JS基础语法、语法、函数、方法等
@@ -39,6 +41,7 @@
   * 添加了日历控件，方便查看特定日期的日报
   * 了解利用nodejs的request库实现跨域数据获取，整理，可视化
   * prop，事件，子组件索引
+  
 * 基于Vue的留言板demo <b>✔2019.3.12</b>
   * 知识点
     * Vuex
@@ -50,8 +53,10 @@
   * 大概了解了一下vue-ui的可视化界面
   * 初步使用了LocalStorage 
   * 美化了一下css 审美苦手。放弃
+  
 * TodoList小项目 [慕课网Vue2.5入门课程实践](https://www.imooc.com/learn/980) <b>✔2019.2.21</b>
   * 一个基本的todolist 熟悉了一下vue的几个指令
+  
 * vue2.0实现一个基本的购物车功能 [使用vue2.0实现购物车和地址选配功能](https://www.imooc.com/learn/796) <b>✔2019.2.26</b>
   * vue2.0-shoppingCart是完成后的项目文件
   * 购物车课程demo 是课程源码
@@ -60,9 +65,14 @@
   * 点击more实现展开折叠
   * 完成地址删除等
   * 地址添加,编辑(待完成)
+  
 * [初识HTML+CSS](https://www.imooc.com/learn/9)<b>✔2019.2.28</b>
   * 花了一天时间过了一下慕课上的这个课程，对一些最基本的css和html语法有了一个了解。由于课程本身就是提交代码形式的，因此没有将代码搬运到这里
-* hello world<br>
+  
+* [一个基本的手势识别demo]  **✔2019.3.27**
+  * 基于hammer.js一个JS的手势识别的库
+  * 算是简单地引入到vue中写了一个很小地功能demo
+
 * 计算器<br> 
   * 实现加法操作<br>
 * 扇形图demo<br>

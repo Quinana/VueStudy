@@ -1,6 +1,6 @@
-# JS的类
+# JS的类⭐
 
-- [JS的类](#js%E7%9A%84%E7%B1%BB)
+- [JS的类⭐](#js%E7%9A%84%E7%B1%BB%E2%AD%90)
   - [ES5 中的仿类结构](#es5-%E4%B8%AD%E7%9A%84%E4%BB%BF%E7%B1%BB%E7%BB%93%E6%9E%84)
   - [类的声明](#%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E)
   - [类与自定义类型的异同](#%E7%B1%BB%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BC%82%E5%90%8C)
@@ -350,7 +350,29 @@ console.log(test.add(2, 3)) // 5
 
 ### 从表达式派生类
 
-在 ES6 中派生类的最强大能力，或许就是**能够从表达式中派生类。**
+在 ES6 中派生类的最强大能力，**能够从表达式中派生类。**
+
+注意 无法从生成器函数进行继承
+
+```javaScript
+let add = class { 
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+  } 
+  getRet() {
+    console.log(this.a + this.b)
+  }
+};
+class addnum extends add {
+  // 可不写
+  // constructor(a, b) {
+  //   super(a, b);
+  // }
+}
+let test = new addnum(2, 3);
+test.getRet();  //  5
+```
 
 ### 继承内置对象
 

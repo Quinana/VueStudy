@@ -4,7 +4,7 @@
 按时间线记录了一下自己学习JS的路线和进度条。每个打勾的都是已完成的小目标  论文赶工中
 ------------------------------------------------------------------
 
-最近更新：2019.4.8
+最近更新：2019.4.11
 -------------------
 
 目前完成进度
@@ -21,6 +21,7 @@
   * [第七章：Set与Map](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第七章：Set与Map.md)
   * [第八章：迭代器与生成器](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第八章：迭代器与生成器.md)
   * [第九章：JS的类](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第九章：JS的类.md)
+  * [第十章：增强的数组功能](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第十章：增强的数组功能.md)
   
 * [JavaScript进阶篇](https://www.imooc.com/learn/10) <b>✔2019.3.21</b>
   * 学习JS基础语法、语法、函数、方法等

@@ -4,13 +4,13 @@
 按时间线记录了一下自己学习JS的路线和进度条。每个打勾的都是已完成的小目标  论文修改意见返回，修改论文中
 ------------------------------------------------------------------
 
-最近更新：2019.4.17
+最近更新：2019.4.23
 -------------------
 
 目前完成进度
 -------------------
 
-* [深入理解ES6 读书笔记](https://book.douban.com/subject/27072230/)
+* [深入理解ES6 读书笔记](https://book.douban.com/subject/27072230/) **✔2019.4.23**
   * 私人向，只记了一下自己觉得重要的东西，知识点可能不是特别完整
   * [第一章：块级作用域绑定](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第一章：块级作用域绑定.md)
   * [第二章：字符串和正则表达式](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第二章：字符串和正则表达式.md)
@@ -22,7 +22,8 @@
   * [第八章：迭代器与生成器](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第八章：迭代器与生成器.md)
   * [第九章：JS的类](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第九章：JS的类.md)
   * [第十章：增强的数组功能](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第十章：增强的数组功能.md)
-  * [第十一章：Promise与异步编程.md](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第十一章：Promise与异步编程.md.md)
+  * [第十一章：Promise与异步编程](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第十一章：Promise与异步编程.md)
+  * [第十三章：用模块封装代码](https://github.com/LinStan/VueStudy/tree/master/读书笔记/深入理解ES6/第十三章：用模块封装代码.md)
   
 * [JavaScript进阶篇](https://www.imooc.com/learn/10) <b>✔2019.3.21</b>
   * 学习JS基础语法、语法、函数、方法等

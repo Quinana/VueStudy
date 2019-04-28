@@ -38,6 +38,12 @@ npm install epubjs --save-dev
 
 引入后记得将ifTitleAndMenuShow 传给两个子组件，不然会报错
 
+### 实现字号选择 涉及MenuBar global Ebook
+
+global主要涉及了渐进动画的设置，可以忽略
+
+Menubar是主要实现
+
 ## Build Setup
 
 ``` bash

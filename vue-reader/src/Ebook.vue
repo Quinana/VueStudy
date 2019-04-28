@@ -10,7 +10,14 @@
       </div>
     </div>
     <!-- 通过ref属性，使下面可以直接通过refs来在dom树中选中该元素 -->
-    <menu-bar :ifTitleAndMenuShow="ifTitleAndMenuShow" ref="menuBar"></menu-bar>
+    <!-- 传递数据给子组件 -->
+    <menu-bar
+      :ifTitleAndMenuShow="ifTitleAndMenuShow"
+      :fontSizeList="fontSizeList"
+      :defaultFontSize="defaultFontSize"
+      @setFontSize="setFontSize"
+      ref="menuBar"
+    ></menu-bar>
   </div>
 </template>
 
@@ -23,7 +30,18 @@ export default {
   Epub,
   data () {
     return {
-      ifTitleAndMenuShow: false
+      ifTitleAndMenuShow: false,
+      // 字体大小列表
+      fontSizeList: [
+        { fontSize: 12 },
+        { fontSize: 14 },
+        { fontSize: 16 },
+        { fontSize: 18 },
+        { fontSize: 20 },
+        { fontSize: 22 },
+        { fontSize: 24 }
+      ],
+      defaultFontSize: 16
     }
   },
   components: { TitleBar, MenuBar },
@@ -41,6 +59,10 @@ export default {
       // 渲染电子书
       this.rendition.display()
       // 至此 渲染成功
+      // 获取theme
+      this.themes = this.rendition.themes
+      // 设置默认字体
+      this.setFontSize(this.defaultFontSize)
     },
     // 两个翻页功能，直接调用epubjs的内置方法
     prevPage () {
@@ -61,6 +83,13 @@ export default {
       // 通过ref在dom树中选中该dom， 并调用其上的方法 以此实现两个滑动栏同时隐藏
       if (!this.ifTitleAndMenuShow) {
         this.$refs.menuBar.HideSetting()
+      }
+    },
+    setFontSize (fontSize) {
+      // 调用epubjs自带的themes属性中的fontsize方法，然后传入字体大小即可实现
+      this.defaultFontSize = fontSize
+      if (this.themes) {
+        this.themes.fontSize(fontSize + 'px')
       }
     }
   },

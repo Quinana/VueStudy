@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuex from 'vuex'
+// 引用图标样式文件
+import '../src/assets/styles/icon.css'
+import '../src/assets/styles/global.scss'
 
 Vue.config.productionTip = false
 

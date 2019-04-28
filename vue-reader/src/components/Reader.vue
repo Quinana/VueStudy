@@ -14,7 +14,7 @@ export default {
   components: { fileReader },
   data () {
     return {
-      text: ''
+      text: []
     }
   }
 }

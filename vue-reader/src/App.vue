@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <div>
-      <h2>Reader</h2>
-    </div>
+    <!-- <span class="icon-back"></span> -->
     <router-view />
   </div>
 </template>
@@ -12,15 +9,16 @@
 export default {
   name: 'App'
 }
+// 设置dom树下html元素中默认的fontsize大小
+// 当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发
+document.addEventListener('DOMContentLoaded', () => {
+  const html = document.querySelector('html')
+  // 限定字体大小上限
+  let fontSize = window.innerWidth / 10
+  fontSize = fontSize > 50 ? 50 : fontSize
+  html.style.fontSize = fontSize + 'px'
+})
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

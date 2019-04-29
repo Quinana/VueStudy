@@ -127,6 +127,7 @@ export default {
       // 生成进度条 在加载完毕后生成具体定位
       this.book.ready.then(() => {
         this.navigation = this.book.navigation
+        console.log(this.navigation)
         // 生成Locations对象
         return this.book.locations.generate()
       }).then(result => {
@@ -134,6 +135,7 @@ export default {
         this.locations = this.book.locations
         // 标记电子书为解析完毕状态
         this.bookAvailable = true
+        console.log(this.bookAvailable)
       })
       // 获取阅读进度
       // this.locations = this.book.locations
@@ -173,7 +175,7 @@ export default {
       // epubjs展示指定页
       this.rendition.display(location)
     },
-    // 根据链接跳转到指定位置
+    // 根据链接跳转到指定位置 目录跳转
     jumpTo (href) {
       this.rendition.display(href)
       this.hideTitleAndMenu()
@@ -182,7 +184,7 @@ export default {
       // 隐藏标题栏和菜单栏
       this.ifTitleAndMenuShow = false
       // 隐藏菜单栏弹出的设置栏
-      this.$refs.menuBar.hideSetting()
+      this.$refs.menuBar.HideSetting()
       // 隐藏目录
       this.$refs.menuBar.hideContent()
     }

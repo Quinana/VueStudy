@@ -11,7 +11,7 @@
         v-show="ifTitleAndMenuShow"
       >
         <div class="icon-wrapper">
-          <span class="icon-menu icon"></span>
+          <span class="icon-menu icon" @click="ShowSetting(3)"></span>
         </div>
         <div class="icon-wrapper">
           <span class="icon-progress icon" @click="ShowSetting(2)"></span>
@@ -103,11 +103,28 @@
         </div>
       </div>
     </transition>
+    <!-- 目录 -->
+    <content-view
+      :ifShowContent="ifShowContent"
+      v-show="ifShowContent"
+      :navigation="navigation"
+      :bookAvailable="bookAvailable"
+      @jumpTo="jumpTo"
+    ></content-view>
+    <transition name="fade">
+      <div
+        class="content-mask"
+        v-show="ifShowContent"
+        @click="hideContent"
+      ></div>
+    </transition>
   </div>
 </template>
 
 <script>
+import ContentView from '@/components/Content'
 export default {
+  components: { ContentView },
   props: {
     ifTitleAndMenuShow: {
       type: Boolean,

@@ -16,6 +16,13 @@
       :fontSizeList="fontSizeList"
       :defaultFontSize="defaultFontSize"
       @setFontSize="setFontSize"
+      :themeList="themeList"
+      :defaultTheme="defaultTheme"
+      @setTheme="setTheme"
+      :bookAvailable="bookAvailable"
+      @onProgressChange="onProgressChange"
+      :navigation="navigation"
+      @jumpTo="jumpTo"
       ref="menuBar"
     ></menu-bar>
   </div>
@@ -41,11 +48,61 @@ export default {
         { fontSize: 22 },
         { fontSize: 24 }
       ],
-      defaultFontSize: 16
+      defaultFontSize: 20,
+      // 主题列表 主题的数据格式是按照epub去查看得到的
+      themeList: [
+        {
+          name: 'default',
+          style: {
+            body: {
+              'color': '#000', 'background': '#fff'
+            }
+          }
+        },
+        {
+          name: 'eye',
+          style: {
+            body: {
+              'color': '#000', 'background': '#ceeaba'
+            }
+          }
+        },
+        {
+          name: 'night',
+          style: {
+            body: {
+              'color': '#fff', 'background': '#000'
+            }
+          }
+        },
+        {
+          name: 'gold',
+          style: {
+            body: {
+              'color': '#000', 'background': 'rgb(241, 236, 226)'
+            }
+          }
+        }
+      ],
+      defaultTheme: 0,
+      // 图书是否处于可用状态
+      bookAvailable: false,
+      navigation: {}
     }
   },
   components: { TitleBar, MenuBar },
   methods: {
+    // 设置主题
+    setTheme (index) {
+      this.themes.select(this.themeList[index].name)
+      this.defaultTheme = index
+    },
+    // 注册主题
+    registerTheme () {
+      this.themeList.forEach(theme => {
+        this.themes.register(theme.name, theme.style)
+      })
+    },
     // 解析电子书
     showEpub () {
       // 生成ebook 注意为了正确生成
@@ -63,6 +120,23 @@ export default {
       this.themes = this.rendition.themes
       // 设置默认字体
       this.setFontSize(this.defaultFontSize)
+      // 注册主题
+      this.registerTheme()
+      // 设置默认主题
+      this.setTheme(this.defaultTheme)
+      // 生成进度条 在加载完毕后生成具体定位
+      this.book.ready.then(() => {
+        this.navigation = this.book.navigation
+        // 生成Locations对象
+        return this.book.locations.generate()
+      }).then(result => {
+        // 保存locations对象
+        this.locations = this.book.locations
+        // 标记电子书为解析完毕状态
+        this.bookAvailable = true
+      })
+      // 获取阅读进度
+      // this.locations = this.book.locations
     },
     // 两个翻页功能，直接调用epubjs的内置方法
     prevPage () {
@@ -91,6 +165,26 @@ export default {
       if (this.themes) {
         this.themes.fontSize(fontSize + 'px')
       }
+    },
+    onProgressChange (progress) {
+      const percentage = progress / 100
+      // epub自带的百分百获取页数
+      const location = percentage > 0 ? this.locations.cfiFromPercentage(percentage) : 0
+      // epubjs展示指定页
+      this.rendition.display(location)
+    },
+    // 根据链接跳转到指定位置
+    jumpTo (href) {
+      this.rendition.display(href)
+      this.hideTitleAndMenu()
+    },
+    hideTitleAndMenu () {
+      // 隐藏标题栏和菜单栏
+      this.ifTitleAndMenuShow = false
+      // 隐藏菜单栏弹出的设置栏
+      this.$refs.menuBar.hideSetting()
+      // 隐藏目录
+      this.$refs.menuBar.hideContent()
     }
   },
   mounted () {

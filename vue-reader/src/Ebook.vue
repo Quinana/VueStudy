@@ -159,9 +159,9 @@ export default {
     },
     // 全文搜索
     entirSearch (keyword) {
-      if (!keyword.length) {
-        alert('请输入关键词')
-      }
+      // if (!keyword.length) {
+      //   alert('请输入关键词')
+      // }
       let book = this.book
       // let q = this.keyword
       let q = keyword

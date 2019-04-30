@@ -103,12 +103,12 @@
         </div>
       </div>
     </transition>
-    <!-- 目录 -->
+    <!-- 目录 目录加载远快于进度加载，因此分别设置-->
     <content-view
       :ifShowContent="ifShowContent"
       v-show="ifShowContent"
       :navigation="navigation"
-      :bookAvailable="bookAvailable"
+      :navigationAvailable="navigationAvailable"
       @jumpTo="jumpTo"
     ></content-view>
     <transition name="fade">
@@ -141,7 +141,11 @@ export default {
       type: Boolean,
       default: false
     },
-    navigation: Object
+    navigation: Object,
+    navigationAvailable: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {

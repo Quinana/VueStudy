@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-right">
     <div class="content">
-      <div class="content-wrapper" v-if="bookAvailable">
+      <div class="content-wrapper" v-if="navigationAvailable">
         <div
           class="content-item"
           v-for="(item, index) in navigation.toc"
@@ -21,7 +21,7 @@ export default {
   props: {
     ifShowContent: Boolean,
     navigation: Object,
-    bookAvailable: Boolean
+    navigationAvailable: Boolean
   },
   methods: {
     jumpTo (target) {

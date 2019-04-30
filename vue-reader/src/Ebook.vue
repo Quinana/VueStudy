@@ -1,10 +1,17 @@
 <template>
   <div class="ebook">
-    <title-bar :ifTitleAndMenuShow="ifTitleAndMenuShow"></title-bar>
+    <title-bar
+      :ifTitleAndMenuShow="ifTitleAndMenuShow"
+      :keyword="keyword"
+      :searchResult="searchResult"
+      @entirSearch="entirSearch"
+      @gotoCfi="gotoCfi"
+    ></title-bar>
     <div class="read-wrapper">
       <div id="read"></div>
       <div class="mask">
         <div class="left" @click="prevPage"></div>
+        <!-- <div class="left" @click="entirSearch"></div> -->
         <div class="middle" @click="toggleTitleandMenu"></div>
         <div class="right" @click="nextPage"></div>
       </div>
@@ -22,6 +29,7 @@
       :bookAvailable="bookAvailable"
       @onProgressChange="onProgressChange"
       :navigation="navigation"
+      :navigationAvailable="navigationAvailable"
       @jumpTo="jumpTo"
       ref="menuBar"
     ></menu-bar>
@@ -32,7 +40,8 @@
 import TitleBar from '@/components/TitleBar'
 import MenuBar from '@/components/MenuBar'
 import Epub from 'epubjs'
-const DOWNLOAD_URL = '/static/大王饶命.epub'
+// const DOWNLOAD_URL = '/static/大王饶命.epub'
+const DOWNLOAD_URL = '/static/山海经.epub'
 export default {
   Epub,
   data () {
@@ -87,7 +96,15 @@ export default {
       defaultTheme: 0,
       // 图书是否处于可用状态
       bookAvailable: false,
-      navigation: {}
+      navigation: {},
+      navigationAvailable: false,
+      // 保存全文搜索结果
+      searchResult: null,
+      // 搜索关键词
+      keyword: '',
+      // searchVisible: false,
+      // keyword: '',
+      results: null
     }
   },
   components: { TitleBar, MenuBar },
@@ -127,7 +144,9 @@ export default {
       // 生成进度条 在加载完毕后生成具体定位
       this.book.ready.then(() => {
         this.navigation = this.book.navigation
-        console.log(this.navigation)
+        // console.log(this.navigation)
+        // 表示目录生成完成
+        this.navigationAvailable = true
         // 生成Locations对象
         return this.book.locations.generate()
       }).then(result => {
@@ -137,8 +156,30 @@ export default {
         this.bookAvailable = true
         console.log(this.bookAvailable)
       })
-      // 获取阅读进度
-      // this.locations = this.book.locations
+    },
+    // 全文搜索
+    entirSearch (keyword) {
+      if (!keyword.length) {
+        alert('请输入关键词')
+      }
+      let book = this.book
+      // let q = this.keyword
+      let q = keyword
+      return Promise.all(
+        book.spine.spineItems.map(item =>
+          item.load(book.load.bind(book))
+            .then(item.find.bind(item, q))
+            .finally(item.unload.bind(item)))
+      ).then((results) => {
+        console.log(results)
+        return new Promise((resolve, reject) => {
+          resolve(results)
+          let mergedResults = [].concat.apply([], results)
+          this.searchResult = mergedResults
+        })
+        // return Promise.resolve([].concat.apply([], results)
+        // )
+      })
     },
     // 两个翻页功能，直接调用epubjs的内置方法
     prevPage () {
@@ -187,6 +228,11 @@ export default {
       this.$refs.menuBar.HideSetting()
       // 隐藏目录
       this.$refs.menuBar.hideContent()
+    },
+    // 根据搜索结果跳转
+    gotoCfi (cfi) {
+      this.rendition.display(cfi)
+      this.hideTitleAndMenu()
     }
   },
   mounted () {

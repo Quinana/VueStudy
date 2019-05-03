@@ -8,7 +8,14 @@
         <div class="right">
           <!-- 全文搜索 -->
           <div class="icon-wrapper">
-            <span class="icon-cart icon" @click="ShowSearch"> </span>
+            <!-- <span class="icon-cart icon" @click="ShowSearch"> </span> -->
+            <!-- <span class="icon-cart icon" @click="ShowSearch"> -->
+            <img
+              src="@/assets/search.png"
+              alt=""
+              class="icon-search"
+              @click="ShowSearch"
+            />
           </div>
           <div class="icon-wrapper">
             <span class="icon-person icon"></span>
@@ -104,6 +111,10 @@ export default {
     .icon-wrapper {
       @include center;
       flex: 0 0 px2rem(40);
+      .icon-search {
+        width: px2rem(20);
+        height: px2rem(20);
+      }
     }
   }
 }

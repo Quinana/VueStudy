@@ -12,6 +12,36 @@
           @click.native="isShow = true"
         ></yd-button>
       </yd-navbar>
+
+      <div
+        v-for="(item, index) in recorderList"
+        :key="index"
+        class="recorderstyle"
+      >
+        <!-- <yd-button @click="_playRecord(index)">{{ item.size }}</yd-button> -->
+        <yd-button @click.native="_playRecord(index)">{{
+          item.size
+        }}</yd-button>
+        <yd-button @click.native="_downloadRecord(index)">Download</yd-button>
+      </div>
+
+      <!-- <div v-for="(item, index) in recorderList" :key="index">
+        <span>{{ item.size }}<yd-button>Download</yd-button></span>
+      </div> -->
+      <!-- <yd-list theme="5"> -->
+      <!-- 这里可选1/2/3/4/5五种样式  -->
+      <!-- <yd-list-item v-for="(item, index) in recorderList" :key="index">
+          <img slot="img" :src="item.img">
+          <span slot="title">{{ item.size }}</span>
+          <yd-list-other slot="other">
+                <div>
+                    <span class="demo-list-price"><em>¥</em>{{item.price}}</span>
+                    <span class="demo-list-del-price">¥{{item.w_price}}</span>
+                </div>
+                <div>content</div>
+            </yd-list-other>
+        </yd-list-item>
+      </yd-list> -->
       <!-- <div>
         <button disabled="disabled" style="float:right;margin:0.9rem 1.3rem 0" @touchstart="showTime()">语音识别开启</button>
       </div> -->
@@ -69,7 +99,8 @@ export default {
       beginTime: null,
       endTime: null,
       timeout: null,
-      recorder: null
+      recorder: null,
+      recorderList: []
     }
   },
   methods: {
@@ -167,7 +198,25 @@ export default {
     _saveRecord: function () {
       let _this = this
       //上传录音地址
-      _this.recorder.save()
+      this.recorderList.push(_this.recorder.save())
+      // _this.recorder.save()
+    },
+    _downloadRecord: function (index) {
+      let _this = this
+      //上传录音地址
+      // this.recorderList.push(_this.recorder.save())
+      _this.recorder.download(this.recorderList[index])
+      // _this.recorder.save()
+    },
+    _playRecord: function (index) {
+      let _this = this
+      //上传录音地址
+      // console.log("点击")
+      console.log(this.recorderList[index])
+      _this.recorder.play1(this.recorderList[index])
+      // debugger
+      // this.recorderList.push(_this.recorder.save())
+      // _this.recorder.save()
     }
   },
   computed: {},
@@ -179,3 +228,9 @@ export default {
   }
 }
 </script>
+<style>
+.recorderstyle {
+  padding: 20px;
+}
+</style>
+

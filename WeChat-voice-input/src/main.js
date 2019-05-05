@@ -5,23 +5,40 @@ import App from './App'
 import router from './router'
 import $ from 'jquery'
 
-import { Button, ButtonGroup } from 'vue-ydui/dist/lib.rem/button';
+import {
+  Button,
+  ButtonGroup
+} from 'vue-ydui/dist/lib.rem/button';
 /* 使用px：import {Button, ButtonGroup} from 'vue-ydui/dist/lib.px/button'; */
 
 Vue.component(Button.name, Button);
 Vue.component(ButtonGroup.name, ButtonGroup);
 
-import { Layout } from 'vue-ydui/dist/lib.rem/layout';
+import {
+  Layout
+} from 'vue-ydui/dist/lib.rem/layout';
 /* 使用px：import {Layout} from 'vue-ydui/dist/lib.px/layout'; */
 
 Vue.component(Layout.name, Layout);
 
-import { NavBar, NavBarBackIcon, NavBarNextIcon } from 'vue-ydui/dist/lib.rem/navbar';
+import {
+  NavBar,
+  NavBarBackIcon,
+  NavBarNextIcon
+} from 'vue-ydui/dist/lib.rem/navbar';
 /* 使用px：import {NavBar, NavBarBackIcon, NavBarNextIcon} from 'vue-ydui/dist/lib.px/navbar'; */
-
 Vue.component(NavBar.name, NavBar);
 Vue.component(NavBarBackIcon.name, NavBarBackIcon);
 Vue.component(NavBarNextIcon.name, NavBarNextIcon);
+
+import {
+  Badge
+} from 'vue-ydui/dist/lib.rem/badge';
+/* 使用px：import {Badge} from 'vue-ydui/dist/lib.px/badge'; */
+
+Vue.component(Badge.name, Badge);
+
+
 import 'vue-ydui/dist/ydui.base.css';
 import "@/commom/stylus/index.styl"
 
@@ -32,5 +49,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {
+    App
+  }
 })

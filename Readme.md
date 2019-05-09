@@ -19,6 +19,7 @@
   * 基于ydui 的ui界面
   * 基于AudioContext实现基本的语音输入保存和语音播放以及下载
   * [代码](https://github.com/LinStan/VueStudy/tree/master/WeChat-voice-input)
+  * 这个小demo是用于整合到小导师的一个小项目，整合进去后用cordova编译成app发现无法成功播放录音，后来查了下好像是audio不适用于移动端，所以换用了cordova的Media插件API，以及File和File-Transfer。实现移动端的录音并上传到服务端，以及接受服务端的返回字段进行录音展示。服务器端使用百度语音API
 
 * **基于Vue的Epub小说阅读器 ✔2019.4.29**
   * 基于epubjs的内置方法实现翻页，目录加载等功能

@@ -11,7 +11,8 @@
 -------------------
 
 * [JavaScript高级程序设计（红皮书）](https://book.douban.com/subject/10546125/)
-  * 进度  第三章
+  * 进度  第四章
+  * 发现百度脑图可以将思维导图转为md格式，推荐
   * [思维导图](https://github.com/LinStan/VueStudy/tree/master/读书笔记/JavaScript高级程序设计)
 
 * **简单的rtmp直播流播放器 ✔2019.5.9**

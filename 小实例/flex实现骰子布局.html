@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<title>flex实现骰子布局</title>
+
+<head>flex实现骰子布局</head>
+
+<body>
+  <div class="first">
+    <span class="point"></span>
+  </div>
+
+  <div class="second">
+    <span class="point"></span>
+    <span class="point"></span>
+  </div>
+
+  <div class="third">
+    <span class="point"></span>
+    <span class="point"></span>
+    <span class="point"></span>
+  </div>
+
+  <div class="four">
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+  </div>
+
+  <div class="five">
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+    <div class="column">
+      <span class="point"></span>
+    </div>
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+  </div>
+
+  <div class="six">
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+    <div class="column">
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
+  </div>
+</body>
+<style>
+  .first {
+    display: flex;
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+  }
+
+  /* 设置排列为中空 */
+  .second {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 第二个的第二个孩子节点从底部排列 */
+  .second .point:nth-child(2) {
+    align-self: flex-end;
+  }
+
+  /* 设置排列为自动调整间距 */
+  .third {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 第二个孩子节点居中，第三个底部 */
+  .third .point:nth-child(2) {
+    align-self: center;
+  }
+
+  .third .point:nth-child(3) {
+    align-self: flex-end;
+  }
+
+  /* 设置排列为自动调整间距 */
+  .four {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 排列方式 列 */
+  .four .column {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    /* align-self: */
+  }
+
+  .five {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .five .column {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .five .column:nth-child(2) {
+    /* flex-direction: column; */
+    /* display: flex; */
+    justify-content: center;
+  }
+
+
+  .six {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  /* 排列方式 列 */
+  .six .column {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    /* align-self: */
+  }
+
+  .point {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: black;
+  }
+</style>
+
+</html>

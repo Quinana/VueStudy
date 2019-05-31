@@ -364,7 +364,7 @@ Vuex实现了一个单向数据流，在全局拥有一个State存放数据，�
 
 图解：
 
-![vuex图解](https://github.com/LinStan/VueStudy/tree/master/读书笔记/img/vuex.png)
+![vuex图解](https://github.com/LinStan/VueStudy/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/img/vuex.png?raw=true)
 
 * 对图中的各模块在流程中的功能
   * Vue Components：Vue组件。负责接收用户操作等交互行为，执行dispatch方法触发对应action进行回应。

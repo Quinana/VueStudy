@@ -10,18 +10,15 @@
 
 <script>
 // 通过创建一个空的bus组件用于中转
-import bus from './commonvue.js'
 import child3 from './Child3'
 import child4 from './Child4'
 export default {
-  name: 'Father',
   data () {
     return {
       msg: ''
     }
   },
   components: {
-    bus: bus,
     child3,
     child4
   }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title>Vue生命周期</title>
+<script src=" https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+
+<body>
+  <div id="app">{{message}}</div>
+  <script>
+    var vm = new Vue({
+      // 如果注释掉el，进行到Created就会停止，直到调用vm.$mount(el)
+      el: '#app',
+      // 优先级: render>template>outerHTML
+      // 使用render的话是在beforeMount和mounted之间完成渲染的替换
+
+      // template: "<div>{{message+' template'}}</div>",
+      // render: function (createElement) {
+      //   return createElement('h1', 'this is render')
+      // },
+      data: {
+        message: 'hello message'
+      },
+      beforeCreate: function () {
+        console.log('-------beforeCreate状态-------')
+        console.log('el: ' + this.$el)
+        console.log('data: ' + this.$data)
+      },
+      created: function () {
+        console.log('-------created状态 完成data渲染-------')
+        console.log("%s", 'el: ' + this.$el)
+        console.log('data: ' + this.$data)
+        console.log(this.$data)
+        console.log('message: ' + this.message)
+      },
+      beforeMount: function () {
+        console.log('-------beforeMount状态 完成template渲染-------')
+        // template的优先级高于outerHtml的优先级
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+      },
+      mounted: function () {
+        console.log('-------mounted状态 完成el替代template中的el-------')
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+      },
+      beforeUpdate: function () {
+        console.log('-------beforeUpdate状态 当data发生更新被调用-------')
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+        console.log('data: ' + this.$data)
+        console.log('message: ' + this.message)
+      },
+      updated: function () {
+        console.log('-------updated状态 更新虚拟dom-------')
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+        console.log('data: ' + this.$data)
+        console.log('message: ' + this.message)
+      },
+      beforeDestroy: function () {
+        console.log('-------beforeDestroy-------');
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+        console.log('data: ' + this.$data)
+        console.log('message: ' + this.message)
+      },
+      destroyed: function () {
+        console.log('-------destroyed-------');
+        console.log('el: ' + this.$el)
+        console.log(this.$el)
+        console.log('data: ' + this.$data)
+        console.log('message: ' + this.message)
+      }
+    })
+  </script>
+</body>
+
+</html>

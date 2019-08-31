@@ -6,7 +6,7 @@ function setColor () {
   else { console.log('green') }
   n++;
 }
-setInterval(function () { setColor() }, 1000);
+// setInterval(function () { setColor() }, 1000);
 
 //基于Promise实现
 async function ryg (color, duration) {

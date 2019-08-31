@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #debounce {
+    width: 300px;
+    height: 300px;
+    background-color: aqua;
+  }
+
+  #throttle {
+    width: 300px;
+    height: 300px;
+    background-color: deepskyblue
+  }
+</style>
+
+<body>
+  <div id="debounce">防抖</div>
+  <div id="throttle">节流</div>
+</body>
+<script>
+  let dc = 0, tc = 0;
+  let debdiv = document.getElementById('debounce');
+  let thrdiv = document.getElementById('throttle');
+  function countde() {
+    debdiv.innerHTML = dc++;
+  };
+  debdiv.onmousemove = debounce(countde, 500);
+  function counttc() {
+    thrdiv.innerHTML = tc++;
+  };
+  thrdiv.onmousemove = throttle(counttc, 500);
+  function debounce(fun, wait) {
+    let time;
+    return function () {
+      let that = this;
+      let args = arguments;
+      if (time) { clearTimeout(time) }
+      time = setTimeout(() => {
+        fun.apply(that, args)
+      }, wait);
+    }
+  }
+  function throttle(fun, wait) {
+    let pre = 0;
+    return function () {
+      let that = this;
+      let args = arguments;
+      let now = Date.now();
+      if (now - pre > wait) {
+        fun.apply(that, args)
+        pre = now
+      }
+    }
+  }
+
+</script>
+
+</html>
